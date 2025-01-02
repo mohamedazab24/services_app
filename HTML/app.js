@@ -19,3 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     `;
 });
+emailjs.init("nlo_sRKwH3HdsasZz");
+
+document.getElementById('serviceForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const serviceID = 'alazab_services';
+    const templateID = 'template_j8iwwhk';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+            alert('تم إرسال الطلب بنجاح!');
+        }, (err) => {
+            alert('فشل في إرسال الطلب. حاول مرة أخرى.');
+        });
+});
