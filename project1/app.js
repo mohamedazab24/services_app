@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const app = document.getElementById('app');
-    let currentStep = 1;
+    let currentStep = 1; // المتغير الذي يحتفظ بالخطوة الحالية
 
     const renderForm = (step) => {
         switch(step) {
@@ -41,6 +41,38 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <option value="200">200</option>
                                     <option value="300">300</option>
                                     <option value="500+">500+</option>
+                                </select>
+                            </div>
+                            <button type="button" id="nextButton">التالي</button>
+                        </form>
+                    </div>
+                `;
+            // أضف باقي الخطوات هنا بطريقة مشابهة
+            case 3:
+                return `
+                    <div class="container">
+                        <h1>نموذج طلب خدمات</h1>
+                        <div id="progress-bar"><div style="width: 30%;"></div></div>
+                        <form id="serviceForm">
+                            <div class="form-group">
+                                <label for="tasks">المطلوب إتمامه</label>
+                                <select id="tasks" name="tasks" multiple>
+                                    <optgroup label="قسم التأسيس">
+                                        <option value="الأعمال الكهربائية">الأعمال الكهربائية</option>
+                                        <option value="أعمال السباكة">أعمال السباكة</option>
+                                        <option value="أعمال النجارة">أعمال النجارة</option>
+                                        <option value="أعمال العزل">أعمال العزل</option>
+                                        <option value="أعمال التجصيص">أعمال التجصيص</option>
+                                        <option value="أعمال الأسقف والجبس">أعمال الأسقف والجبس</option>
+                                    </optgroup>
+                                    <optgroup label="قسم التشطيبات">
+                                        <option value="أعمال الأرضيات">أعمال الأرضيات</option>
+                                        <option value="أعمال الدهانات">أعمال الدهانات</option>
+                                        <option value="تشطيب أعمال الكهرباء">تشطيب أعمال الكهرباء</option>
+                                        <option value="الانتهاء من أعمال السباكة">الانتهاء من أعمال السباكة</option>
+                                        <option value="تركيب الأبواب والنوافذ">تركيب الأبواب والنوافذ</option>
+                                        <option value="اكسسوارات أعمال التشطيب">اكسسوارات أعمال التشطيب</option>
+                                    </optgroup>
                                 </select>
                             </div>
                             <button type="button" id="nextButton">التالي</button>
