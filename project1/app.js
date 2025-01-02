@@ -93,47 +93,48 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const updateForm = () => {
-    app.innerHTML = renderForm(currentStep);
-    const nextButton = document.getElementById('nextButton');
-    const backButton = document.getElementById('backButton');
-    const submitButton = document.getElementById('submitButton');
-    
-    if (nextButton) {
-        nextButton.addEventListener('click', () => {
-            currentStep++;
-            updateForm();
-        });
-    }
-
-    if (backButton) {
-        backButton.addEventListener('click', () => {
-            currentStep--;
-            updateForm();
-        });
-    }
-
-    if (submitButton) {
-        submitButton.addEventListener('click', () => {
-            // جمع البيانات هنا
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            // أضف باقي الحقول هنا
-
-            // استخدام EmailJS لإرسال البيانات
-            emailjs.init('nlo_sRKwH3HdsasZz');
-            emailjs.send('alazab_services', 'template_j8iwwhk', {
-                // هنا تضع البيانات التي تريد إرسالها
-                email: email,
-                phone: phone,
-                // أضف الحقول الأخرى هنا
-            }).then(() => {
-                currentStep = 11; // الانتقال إلى صفحة الشكر بعد الإرسال الناجح
+        app.innerHTML = renderForm(currentStep);
+        const nextButton = document.getElementById('nextButton');
+        const backButton = document.getElementById('backButton');
+        const submitButton = document.getElementById('submitButton');
+        
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                currentStep++;
                 updateForm();
-            }).catch((error) => {
-                console.error('خطأ في إرسال البريد الإلكتروني:', error);
             });
-        });
-    }
-};
+        }
 
-updateForm();
+        if (backButton) {
+            backButton.addEventListener('click', () => {
+                currentStep--;
+                updateForm();
+            });
+        }
+
+        if (submitButton) {
+            submitButton.addEventListener('click', () => {
+                // جمع البيانات هنا
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                // أضف باقي الحقول هنا
+
+                // استخدام EmailJS لإرسال البيانات
+                emailjs.init('nlo_sRKwH3HdsasZz');
+                emailjs.send('alazab_services', 'template_j8iwwhk', {
+                    // هنا تضع البيانات التي تريد إرسالها
+                    email: email,
+                    phone: phone,
+                    // أضف الحقول الأخرى هنا
+                }).then(() => {
+                    currentStep = 11; // الانتقال إلى صفحة الشكر بعد الإرسال الناجح
+                    updateForm();
+                }).catch((error) => {
+                    console.error('خطأ في إرسال البريد الإلكتروني:', error);
+                });
+            });
+        }
+    };
+
+    updateForm();
+});
